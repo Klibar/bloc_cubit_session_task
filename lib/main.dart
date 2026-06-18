@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mbi_calculator/screens/main_screen.dart';
+import 'package:mbi_calculator/views/mbi_input_view.dart';
 
 void main() {
   runApp(const MyApp());
