@@ -130,77 +130,68 @@ class _MainScreenState extends State<MainScreen> {
                     horizontal: 15,
                     vertical: 49,
                   ),
-                  child: Row(
-                    mainAxisAlignment: .center,
-                    children: [
-                      Column(
+                  child: BlocBuilder<BmiCubit, BmiState>(
+                    builder: (BuildContext context, BmiState state) {
+                      return Row(
+                        mainAxisAlignment: .center,
                         children: [
-                          Row(
+                          Column(
                             children: [
-                              Text(
-                                'HEIGHT',
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 20,
-                                  letterSpacing: -0.5,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'HEIGHT',
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 20,
+                                      letterSpacing: -0.5,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              BlocBuilder<BmiCubit, BmiState>(
-                                builder:
-                                    (BuildContext context, BmiState state) {
-                                      return Text(
-                                        context
-                                            .read<BmiCubit>()
-                                            .height
-                                            .toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                              Row(
+                                children: [
+                                  Text(
+                                    context.read<BmiCubit>().height.toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    ' cm',
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Slider(
+                                    value: context
+                                        .read<BmiCubit>()
+                                        .height
+                                        .toDouble(),
+                                    min: 100,
+                                    max: 210,
+                                    activeColor: Colors.pinkAccent,
+                                    inactiveColor: textColor,
+                                    onChanged: (value) {
+                                      context.read<BmiCubit>().changeHeight(
+                                        value.toInt(),
                                       );
                                     },
-                              ),
-                              Text(
-                                ' cm',
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 25,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              BlocBuilder<BmiCubit, BmiState>(
-                                builder:
-                                    (BuildContext context, BmiState state) {
-                                      return Slider(
-                                        value: context
-                                            .read<BmiCubit>()
-                                            .height
-                                            .toDouble(),
-                                        min: 100,
-                                        max: 210,
-                                        activeColor: Colors.pinkAccent,
-                                        inactiveColor: textColor,
-                                        onChanged: (value) {
-                                          context.read<BmiCubit>().changeHeight(
-                                            value.toInt(),
-                                          );
-                                        },
-                                      );
-                                    },
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ],
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ),
