@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mbi_calculator/cubits/bmi_cubit/bmi_cubit.dart';
+import 'package:mbi_calculator/cubits/bmi_cubit/bmi_states.dart';
 import 'package:mbi_calculator/views/mbi_input_view.dart';
 
 void main() {
@@ -12,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      home: BlocProvider<BmiCubit>(
+        create: (_) => BmiCubit(InitialState()),
+        child: MainScreen(),
+      ),
     );
   }
 }

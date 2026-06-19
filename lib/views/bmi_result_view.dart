@@ -33,7 +33,7 @@ class _ResultScreenState extends State<ResultScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 55),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Center(
               child: Text(
                 'Your Result',
@@ -47,7 +47,7 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Container(
               height: 500,
               width: double.infinity,
@@ -59,11 +59,11 @@ class _ResultScreenState extends State<ResultScreen> {
                 mainAxisAlignment: .spaceEvenly,
                 children: [
                   Text(
-                    'overwhi',
+                    'OVERWEIGHT',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xffe83d66),
                       fontWeight: FontWeight.bold,
-                      fontSize: 35,
+                      fontSize: 25,
                     ),
                   ),
                   Text(
@@ -71,7 +71,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 50,
+                      fontSize: 60,
                     ),
                   ),
                   Padding(
@@ -79,7 +79,11 @@ class _ResultScreenState extends State<ResultScreen> {
                     child: Text(
                       'You have higher than normal weight\n Please excercie more often',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        letterSpacing: -0.5,
+                      ),
                     ),
                   ),
                 ],
@@ -92,7 +96,7 @@ class _ResultScreenState extends State<ResultScreen> {
             },
             child: Container(
               width: double.infinity,
-              height: 109,
+              height: 118,
               decoration: BoxDecoration(color: Color(0xffe83d66)),
               child: Center(
                 child: Text(
