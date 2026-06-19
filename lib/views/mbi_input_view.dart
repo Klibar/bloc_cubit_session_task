@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mbi_calculator/views/bmi_result_view.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,6 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   int userHeight = 100;
   int userWhight = 50;
   int userAge = 10;
+  bool gender = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           maleCardColor = Color(0xff111328);
                           femaleCardColor = Color(0xff1d1e33);
+                          gender = true;
                         });
                       },
                       child: Container(
@@ -70,6 +73,7 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           femaleCardColor = Color(0xff111328);
                           maleCardColor = Color(0xff1d1e33);
+                          gender = true;
                         });
                       },
                       child: Container(
@@ -318,7 +322,12 @@ class _MainScreenState extends State<MainScreen> {
           ),
           Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultScreen()),
+                );
+              },
               child: Container(
                 width: double.infinity,
                 height: 115,

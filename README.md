@@ -1,4 +1,4 @@
-# mbi_calculator
+# MBI_Calculator
 
 A new Flutter project.
 
