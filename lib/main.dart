@@ -13,12 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider<BmiCubit>(
-        create: (_) => BmiCubit(InitialState()),
-        child: MainScreen(),
-      ),
+    return BlocProvider(
+      create: (context) => BmiCubit(InitialState()),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: MainScreen()),
     );
   }
 }

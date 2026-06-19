@@ -360,6 +360,18 @@ class _MainScreenState extends State<MainScreen> {
             Center(
               child: GestureDetector(
                 onTap: () {
+                  context.read<BmiCubit>().bmiCaculate(
+                    context.read<BmiCubit>().height,
+                    context.read<BmiCubit>().weight,
+                  );
+                  context.read<BmiCubit>().geDescrption(
+                    context.read<BmiCubit>().height,
+                    context.read<BmiCubit>().weight,
+                  );
+                  context.read<BmiCubit>().getStats(
+                    context.read<BmiCubit>().height,
+                    context.read<BmiCubit>().weight,
+                  );
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ResultScreen()),

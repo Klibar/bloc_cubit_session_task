@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mbi_calculator/cubits/bmi_cubit/bmi_cubit.dart';
+import 'package:mbi_calculator/cubits/bmi_cubit/bmi_states.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key});
@@ -55,38 +58,42 @@ class _ResultScreenState extends State<ResultScreen> {
                 color: Color(0xff1d1e33),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Column(
-                mainAxisAlignment: .spaceEvenly,
-                children: [
-                  Text(
-                    'OVERWEIGHT',
-                    style: TextStyle(
-                      color: Color(0xffe83d66),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                  ),
-                  Text(
-                    '30.4',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 60,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      'You have higher than normal weight\n Please excercie more often',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        letterSpacing: -0.5,
+              child: BlocBuilder<BmiCubit, BmiState>(
+                builder: (BuildContext context, BmiState state) {
+                  return Column(
+                    mainAxisAlignment: .spaceEvenly,
+                    children: [
+                      Text(
+                        context.read<BmiCubit>().stats,
+                        style: TextStyle(
+                          color: context.read<BmiCubit>().statsColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
                       ),
-                    ),
-                  ),
-                ],
+                      Text(
+                        context.read<BmiCubit>().bmi.toStringAsFixed(2),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 60,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          context.read<BmiCubit>().descrption,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
